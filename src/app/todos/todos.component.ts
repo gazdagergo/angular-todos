@@ -31,4 +31,12 @@ export class TodosComponent implements OnInit {
     });
   }
 
+  deleteTodo(todoText) {
+    for(let i = 0, max = this.todos.length; i < max; i++ ){
+      if(this.todos[i].text == todoText){
+        this.todos.splice(i,1);
+      }
+    }
+  }
+
 }

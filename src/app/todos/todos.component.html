@@ -6,6 +6,6 @@
 <h3>Todos list</h3>
 <ul>
   <li *ngFor="let todo of todos">
-    {{ todo.text }}
+    {{ todo.text }} <button (click)="deleteTodo(todo.text)">x</button> <!--id in final version-->
   </li>
 </ul>
