@@ -1,3 +1,11 @@
-<p>
-  todos works!
-</p>
+<h3>Add Todo</h3>
+<form (submit)="addTodo()"> <!--submit event-->
+  <input type="text" [(ngModel)]="text" name="text"> <!--ngmodel for 2-way data binding-->
+</form>
+
+<h3>Todos list</h3>
+<ul>
+  <li *ngFor="let todo of todos">
+    {{ todo.text }}
+  </li>
+</ul>
