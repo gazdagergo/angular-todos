@@ -1,11 +1,22 @@
-<h3>Add Todo</h3>
-<form (submit)="addTodo()"> <!--submit event-->
-  <input type="text" [(ngModel)]="text" name="text"> <!--ngmodel for 2-way data binding-->
-</form>
+
+<div *ngIf="appState == 'default'">
+  <h3>Add Todo</h3>
+  <form (submit)="addTodo()"> <!--submit event-->
+    <input type="text" [(ngModel)]="text" name="text"> <!--ngmodel for 2-way data binding-->
+  </form>
+</div>
+
+<div *ngIf="appState == 'edit'">
+  <h3>Edit Todo</h3>
+  <form (submit)="updateTodo()">
+    <input type="text" [(ngModel)]="text" name="text">
+  </form>
+</div>
+
 
 <h3>Todos list</h3>
 <ul>
   <li *ngFor="let todo of todos">
-    {{ todo.text }} <button (click)="deleteTodo(todo.text)">x</button> <!--id in final version-->
+    <span (click)="editTodo(todo)"> {{ todo.text }} </span><button (click)="deleteTodo(todo.text)">x</button> <!--id in final version-->
   </li>
 </ul>
