@@ -13,23 +13,18 @@ export class TodosComponent implements OnInit {
   constructor(private _todoService: TodoService) { }
 
   ngOnInit() {
-    this.todos = [
-      {
-        text: 'Pickup kids at school'
-      },
-      {
-        text: 'Meeting with boss'
-      },
-      {
-        text: 'Dinner with wife'
-      }
-    ]
+    this.todos = this._todoService.getTodos();
+
   }
 
   addTodo(){
-    this.todos.push({
+    var newTodo = {
       text: this.text
-    });
+    }
+
+    this.todos.push(newTodo);
+
+    this._todoService.addTodo(newTodo);
   }
 
   deleteTodo(todoText) {
