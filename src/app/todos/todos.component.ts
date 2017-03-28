@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { TodoService } from '../todo.service';
 
 @Component({
   selector: 'app-todos',
@@ -9,7 +10,7 @@ export class TodosComponent implements OnInit {
 
   todos;
   text;
-  constructor() { }
+  constructor(private _todoService: TodoService) { }
 
   ngOnInit() {
     this.todos = [
@@ -32,7 +33,7 @@ export class TodosComponent implements OnInit {
   }
 
   deleteTodo(todoText) {
-    for(let i = 0, max = this.todos.length; i < max; i++ ){
+    for(var i = 0; i < this.todos.length; i++ ){
       if(this.todos[i].text == todoText){
         this.todos.splice(i,1);
       }
